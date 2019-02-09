@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Warehouse1.Models.warehousemedicine>
+
+@{
+    ViewBag.Title = "Medicines";
+    var grid = new WebGrid(source: Model, canPage: true, rowsPerPage: 10);
+    grid.Pager(WebGridPagerModes.All);
+}
+
+<h2>Medicines</h2>
+<br />
+
+<p>
+    @Html.ActionLink("Create New", "CreateMed")
+</p>
+<style type="text/css">
+            /*Here we will add css for style webgrid*/
+                .webgrid-table
+                {
+                    font-family: "Trebuchet MS" , Arial, Helvetica, sans-serif;
+                    font-size: 1.0em;
+                    width: 100%;
+                    display: table;
+                    border-collapse: separate;
+                    border: solid 1px #2C3E50;
+                    background-color: white;
+                }
+                .webgrid-table td, th
+                {
+                    border: 1px solid #2C3E50;
+                    padding: 3px 7px 2px;
+                }
+                .webgrid-header
+                {
+                    background-color: #2C3E50;
+                    color: #FFFFFF;
+                    padding-bottom: 4px;
+                    padding-top: 5px;
+                    text-align: left;
+                }
+                .webgrid-footer
+                {
+                }
+                .webgrid-row-style
+                {
+                    padding: 3px 7px 2px;
+                }
+                .webgrid-alternating-row
+                {
+                    background-color: #9ec9e8;
+                    padding: 3px 7px 2px;
+                }
+            </style>
+
+            <div id="content">
+                @grid.GetHtml(
+                tableStyle:"webgrid-table",
+                headerStyle:"webgrid-header",
+                footerStyle:"webgrid-footer",
+                alternatingRowStyle:"webgrid-alternating-row",
+                rowStyle:"webgrid-row-style",
+                columns:grid.Columns(
+                    //here i will add column for serial no
+                    grid.Column(header:"Serial No", format:@<text><div>@(item.WebGrid.Rows.IndexOf(item)+1)</div></text>),
+                    grid.Column(columnName:"Name",header:"Name"),
+                    grid.Column(columnName:"Price", header:"Price"),
+                    grid.Column(columnName:"Quantity",header:"Quantity"),
+                    grid.Column(columnName:"Expired_Date",header:"Expire Date"),
+                    grid.Column(columnName:"ChemicalForm",header:"Chemical Form"),
+                    grid.Column(columnName: "CompanyName", header: "Company"),
+                    grid.Column(header: "Actions", format: (item) => new HtmlString(  
+                    Html.ActionLink("Edit", "EditMed", new { id = item.id } ) .ToString() +
+                    Html.ActionLink("Delete", "DeleteMed", new { id = item.id } ) .ToString() ))
+
+                   ))
+            </div>
+}
+
+</table>

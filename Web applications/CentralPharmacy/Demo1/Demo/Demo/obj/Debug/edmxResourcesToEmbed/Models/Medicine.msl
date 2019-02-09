@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PharmacyModelStoreContainer" CdmEntityContainer="PharmacyEntities">
+    <EntitySetMapping Name="ChemicalForms">
+      <EntityTypeMapping TypeName="PharmacyModel.ChemicalForm">
+        <MappingFragment StoreEntitySet="ChemicalForm">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ChemicalForm1" ColumnName="ChemicalForm" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="PharmacyModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medicines">
+      <EntityTypeMapping TypeName="PharmacyModel.Medicine">
+        <MappingFragment StoreEntitySet="Medicine">
+          <ScalarProperty Name="Med_ID" ColumnName="Med_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Expire_Date" ColumnName="Expire_Date" />
+          <ScalarProperty Name="ChemicalForm" ColumnName="ChemicalForm" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

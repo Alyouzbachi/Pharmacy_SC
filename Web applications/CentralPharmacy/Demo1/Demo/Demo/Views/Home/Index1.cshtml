@@ -1,0 +1,43 @@
+﻿@model Demo.Models.pharmacy
+
+@{
+    ViewBag.Title = "Index1";
+}
+
+<h2>Pharmacy Info</h2>
+<br />
+<br />
+<fieldset>
+    <legend>pharmacy</legend>
+
+    <td>
+        Pharmacy Name : @Html.DisplayFor(model => model.Name)
+    </td>
+    <br />
+    <br />
+
+    <td>
+        Address : @Html.DisplayFor(model => model.address)
+    </td>
+    <br />
+    <br />
+
+    <td>
+        Tel Number : @Html.DisplayFor(model => model.Tel)
+    </td>
+    <br />
+    <br />
+      
+    <td>
+        Open Hours : @Html.DisplayFor(model => model.Open)
+    </td>
+    <br />
+    <br />
+
+
+    <td>
+    <a href='@Url.Action("PharmacyDetails", "Home",new { id = Model.id }) '>
+    <img src='@Url.Content("~/Content/Images/setting.png")' />
+    </a><br /><br />
+    </td>
+

@@ -1,0 +1,46 @@
+﻿@model Demo.Models.warehousemedicine
+
+@{
+    ViewBag.Title = "Demand";
+}
+
+<h2>Demand</h2>
+
+<fieldset>
+    <legend>Are you sure you want to demand this medicine ?</legend>
+
+    <div class="display-field">
+        Name : @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-field">
+        Price : @Html.DisplayFor(model => model.Price)
+    </div>
+
+    <div class="display-field">
+        Expire Date :@Html.DisplayFor(model => model.Expired_date)
+    </div>
+
+    <div class="display-field">
+        Chemical Form :@Html.DisplayFor(model => model.ChemicalForm)
+    </div>
+    <div class="display-field">
+        warehouse : @Html.DisplayFor(model => model.warehouse.Name)
+    </div>
+
+    <div class="display-field">
+        Company name :@Html.DisplayFor(model => model.CompanyName)
+    </div>
+    <h3>Please fill the quantity.</h3>
+    <p>
+          @using (Html.BeginForm("Demand", "Demand", FormMethod.Post))
+          {    
+        <p> quantity : <input type="number" id="NewQuantity" name="NewQuantity"/> <br /> 
+        <input type="submit" value="Submit" />
+    </p>
+              }
+    </p>
+</fieldset>
+<p>
+    @Html.ActionLink("Back to List", "Warehouse","Home",null,null)
+</p>

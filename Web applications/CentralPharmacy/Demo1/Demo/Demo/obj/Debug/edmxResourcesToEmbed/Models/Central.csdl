@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_9ff70c_centralModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="db_9ff70c_centralEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="demands" EntityType="db_9ff70c_centralModel.demand" />
+    <EntitySet Name="meds" EntityType="db_9ff70c_centralModel.med" />
+    <EntitySet Name="pharmacies" EntityType="db_9ff70c_centralModel.pharmacy" />
+    <EntitySet Name="warehouses" EntityType="db_9ff70c_centralModel.warehouse" />
+    <EntitySet Name="warehousemedicines" EntityType="db_9ff70c_centralModel.warehousemedicine" />
+    <EntitySet Name="xmlphars" EntityType="db_9ff70c_centralModel.xmlphar" />
+    <AssociationSet Name="demand_ibfk_1" Association="db_9ff70c_centralModel.demand_ibfk_1">
+      <End Role="pharmacy" EntitySet="pharmacies" />
+      <End Role="demand" EntitySet="demands" />
+    </AssociationSet>
+    <AssociationSet Name="demand_ibfk_2" Association="db_9ff70c_centralModel.demand_ibfk_2">
+      <End Role="warehouse" EntitySet="warehouses" />
+      <End Role="demand" EntitySet="demands" />
+    </AssociationSet>
+    <AssociationSet Name="med_ibfk_1" Association="db_9ff70c_centralModel.med_ibfk_1">
+      <End Role="pharmacy" EntitySet="pharmacies" />
+      <End Role="med" EntitySet="meds" />
+    </AssociationSet>
+    <AssociationSet Name="xmlphar_ibfk_1" Association="db_9ff70c_centralModel.xmlphar_ibfk_1">
+      <End Role="pharmacy" EntitySet="pharmacies" />
+      <End Role="xmlphar" EntitySet="xmlphars" />
+    </AssociationSet>
+    <AssociationSet Name="xmlphar_ibfk_2" Association="db_9ff70c_centralModel.xmlphar_ibfk_2">
+      <End Role="pharmacy" EntitySet="pharmacies" />
+      <End Role="xmlphar" EntitySet="xmlphars" />
+    </AssociationSet>
+    <AssociationSet Name="warehousemedicines_ibfk_1" Association="db_9ff70c_centralModel.warehousemedicines_ibfk_1">
+      <End Role="warehouse" EntitySet="warehouses" />
+      <End Role="warehousemedicines" EntitySet="warehousemedicines" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="demand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Phar_id" Type="Int32" Nullable="false" />
+    <Property Name="warhouse_id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Single" Nullable="false" />
+    <Property Name="ExpiredDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="companyName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="chemicalForm" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="Date_submitted" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="pharmacy" Relationship="db_9ff70c_centralModel.demand_ibfk_1" FromRole="demand" ToRole="pharmacy" />
+    <NavigationProperty Name="warehouse" Relationship="db_9ff70c_centralModel.demand_ibfk_2" FromRole="demand" ToRole="warehouse" />
+  </EntityType>
+  <EntityType Name="med">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Price" Type="Single" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Pharmacy_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="pharmacy" Relationship="db_9ff70c_centralModel.med_ibfk_1" FromRole="med" ToRole="pharmacy" />
+  </EntityType>
+  <EntityType Name="pharmacy">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="latitude" Type="Double" Nullable="false" />
+    <Property Name="langtitude" Type="Double" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Tel" Type="Int32" Nullable="false" />
+    <Property Name="Open" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="demands" Relationship="db_9ff70c_centralModel.demand_ibfk_1" FromRole="pharmacy" ToRole="demand" />
+    <NavigationProperty Name="meds" Relationship="db_9ff70c_centralModel.med_ibfk_1" FromRole="pharmacy" ToRole="med" />
+    <NavigationProperty Name="xmlphars" Relationship="db_9ff70c_centralModel.xmlphar_ibfk_1" FromRole="pharmacy" ToRole="xmlphar" />
+    <NavigationProperty Name="xmlphars1" Relationship="db_9ff70c_centralModel.xmlphar_ibfk_2" FromRole="pharmacy" ToRole="xmlphar" />
+  </EntityType>
+  <EntityType Name="warehouse">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="address" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="tel" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="demands" Relationship="db_9ff70c_centralModel.demand_ibfk_2" FromRole="warehouse" ToRole="demand" />
+    <NavigationProperty Name="warehousemedicines" Relationship="db_9ff70c_centralModel.warehousemedicines_ibfk_1" FromRole="warehouse" ToRole="warehousemedicines" />
+  </EntityType>
+  <EntityType Name="warehousemedicine">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Price" Type="Single" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Expired_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ChemicalForm" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Warehouse_id" Type="Int32" Nullable="false" />
+    <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="warehouse" Relationship="db_9ff70c_centralModel.warehousemedicines_ibfk_1" FromRole="warehousemedicines" ToRole="warehouse" />
+  </EntityType>
+  <EntityType Name="xmlphar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Phar_id_sending" Type="Int32" Nullable="false" />
+    <Property Name="Phar_id_receiving" Type="Int32" Nullable="false" />
+    <Property Name="text" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="pharmacy" Relationship="db_9ff70c_centralModel.xmlphar_ibfk_1" FromRole="xmlphar" ToRole="pharmacy" />
+    <NavigationProperty Name="pharmacy1" Relationship="db_9ff70c_centralModel.xmlphar_ibfk_2" FromRole="xmlphar" ToRole="pharmacy" />
+  </EntityType>
+  <Association Name="demand_ibfk_1">
+    <End Role="pharmacy" Type="db_9ff70c_centralModel.pharmacy" Multiplicity="1" />
+    <End Role="demand" Type="db_9ff70c_centralModel.demand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pharmacy">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="demand">
+        <PropertyRef Name="Phar_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="demand_ibfk_2">
+    <End Role="warehouse" Type="db_9ff70c_centralModel.warehouse" Multiplicity="1" />
+    <End Role="demand" Type="db_9ff70c_centralModel.demand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="warehouse">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="demand">
+        <PropertyRef Name="warhouse_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="med_ibfk_1">
+    <End Role="pharmacy" Type="db_9ff70c_centralModel.pharmacy" Multiplicity="1" />
+    <End Role="med" Type="db_9ff70c_centralModel.med" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pharmacy">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="med">
+        <PropertyRef Name="Pharmacy_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="xmlphar_ibfk_1">
+    <End Role="pharmacy" Type="db_9ff70c_centralModel.pharmacy" Multiplicity="1" />
+    <End Role="xmlphar" Type="db_9ff70c_centralModel.xmlphar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pharmacy">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="xmlphar">
+        <PropertyRef Name="Phar_id_sending" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="xmlphar_ibfk_2">
+    <End Role="pharmacy" Type="db_9ff70c_centralModel.pharmacy" Multiplicity="1" />
+    <End Role="xmlphar" Type="db_9ff70c_centralModel.xmlphar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pharmacy">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="xmlphar">
+        <PropertyRef Name="Phar_id_receiving" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="warehousemedicines_ibfk_1">
+    <End Role="warehouse" Type="db_9ff70c_centralModel.warehouse" Multiplicity="1" />
+    <End Role="warehousemedicines" Type="db_9ff70c_centralModel.warehousemedicine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="warehouse">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="warehousemedicines">
+        <PropertyRef Name="Warehouse_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

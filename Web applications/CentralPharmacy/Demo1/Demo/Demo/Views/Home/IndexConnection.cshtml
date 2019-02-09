@@ -1,0 +1,19 @@
+﻿@model Demo.Models.pharmacy
+
+@{
+    ViewBag.Title = "IndexConnection";
+}
+
+
+<br />
+<br />
+    <td>
+    <a href='@Url.Action("Index1", "Home") '>
+    <img src='@Url.Content("~/Content/Images/setting.png")' />
+    </a>Update Information.<br /><br />
+        @using (Html.BeginForm("Refresh", "Home"))
+{ 
+    <button name="Refresh" type="submit" value="Refresh" class="btn btn-default">Refresh </button> 
+}
+     
+    </td>

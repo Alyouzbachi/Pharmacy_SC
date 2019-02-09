@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#CFD8DC"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#CFD8DC">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSearchResultTitle"
+        android:id="@+id/TvWelcomeUserprofile"
+        android:layout_marginTop="75dp"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Search Medicine"
+        android:layout_marginTop="50dp"
+        android:id="@+id/BtnSearchMed"
+        android:layout_gravity="center_horizontal"
+        android:onClick="SearchMedicineActivity"
+        android:background="#ECEFF1"
+        android:textStyle="bold"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Nearby pharmacies"
+        android:id="@+id/BtnNearbyPharmacy"
+        android:layout_gravity="center_horizontal"
+        android:onClick="NearbyPharmacyActivity"
+        android:background="#ECEFF1"
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Setting"
+        android:layout_marginTop="10dp"
+        android:id="@+id/BtnSetting"
+        android:layout_gravity="center_horizontal"
+        android:onClick="ProfileSettingActivity"
+        android:background="#ECEFF1"
+        android:textStyle="bold"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/EtUserNameEditSetting"
+            android:padding="15dp"
+            android:hint="User name"
+            android:layout_marginTop="50dp"
+            android:inputType="textPersonName"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="First name"
+            android:id="@+id/EtFirstNameEditSetting"
+            android:inputType="textPersonName"
+            android:padding="15dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:id="@+id/EtPasswordEditSetting"
+            android:padding="15dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirm password"
+            android:inputType="textPassword"
+            android:id="@+id/EtConfirmPasswordEditSetting"
+            android:padding="15dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Birth date:"
+            android:padding="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/EtBirthdateEditSetting"
+            android:padding="15dp"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pick date"
+            android:id="@+id/BtnPickdateEditSetting"
+            android:padding="15dp"
+            android:layout_gravity="center"
+            android:onClick="DatePicker"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Update"
+            android:id="@+id/BtnUpdateEditSetting"
+            android:layout_marginTop="25dp"
+            android:onClick="Update"/>
+    </LinearLayout>
+</ScrollView>

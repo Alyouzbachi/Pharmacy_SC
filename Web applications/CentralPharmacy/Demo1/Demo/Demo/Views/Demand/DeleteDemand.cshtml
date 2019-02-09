@@ -1,0 +1,68 @@
+﻿@model Demo.Models.demand
+
+@{
+    ViewBag.Title = "DeleteDemand";
+}
+
+<h2>DeleteDemand</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>demand</legend>
+
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Quantity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Quantity)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ExpiredDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ExpiredDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.companyName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.companyName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.chemicalForm)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.chemicalForm)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date_submitted)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date_submitted)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

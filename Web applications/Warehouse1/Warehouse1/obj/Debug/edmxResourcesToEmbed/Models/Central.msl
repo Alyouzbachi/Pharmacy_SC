@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db_9ff70c_centralModelStoreContainer" CdmEntityContainer="db_9ff70c_centralEntities">
+    <EntitySetMapping Name="demands">
+      <EntityTypeMapping TypeName="db_9ff70c_centralModel.demand">
+        <MappingFragment StoreEntitySet="demand">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Phar_id" ColumnName="Phar_id" />
+          <ScalarProperty Name="warhouse_id" ColumnName="warhouse_id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+          <ScalarProperty Name="companyName" ColumnName="companyName" />
+          <ScalarProperty Name="chemicalForm" ColumnName="chemicalForm" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Date_submitted" ColumnName="Date_submitted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="meds">
+      <EntityTypeMapping TypeName="db_9ff70c_centralModel.med">
+        <MappingFragment StoreEntitySet="med">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Pharmacy_id" ColumnName="Pharmacy_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pharmacies">
+      <EntityTypeMapping TypeName="db_9ff70c_centralModel.pharmacy">
+        <MappingFragment StoreEntitySet="pharmacy">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="langtitude" ColumnName="langtitude" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Open" ColumnName="Open" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="warehouses">
+      <EntityTypeMapping TypeName="db_9ff70c_centralModel.warehouse">
+        <MappingFragment StoreEntitySet="warehouse">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="warehousemedicines">
+      <EntityTypeMapping TypeName="db_9ff70c_centralModel.warehousemedicine">
+        <MappingFragment StoreEntitySet="warehousemedicines">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Expired_date" ColumnName="Expired_date" />
+          <ScalarProperty Name="ChemicalForm" ColumnName="ChemicalForm" />
+          <ScalarProperty Name="Warehouse_id" ColumnName="Warehouse_id" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

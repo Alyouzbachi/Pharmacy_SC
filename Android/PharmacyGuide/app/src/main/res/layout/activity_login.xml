@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/EtUserName"
+        android:hint="User name"
+        android:gravity="center"
+        android:layout_marginTop="75dp"
+        android:padding="20dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/EtPassword"
+        android:hint="Password"
+        android:gravity="center"
+        android:padding="20dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:id="@+id/BtnLogin"
+        android:onClick="Login"
+        android:padding="20dp"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TvSignup"
+        android:text="Sign up"
+        android:layout_marginTop="50dp"
+        android:clickable="true"
+        android:onClick="Signup"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="Forget password?"
+        android:onClick="ForgetPassword"
+        android:id="@+id/TvForgetpassword"
+        android:gravity="center"
+        android:layout_marginTop="100dp"/>
+</LinearLayout>
+</ScrollView>

@@ -1,0 +1,68 @@
+﻿@model Demo.Models.Medicine
+
+@{
+    ViewBag.Title = "Sell";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sell</h2>
+
+<h3>Are you sure you want to Sell this?</h3>
+<fieldset>
+    <legend>Medicine</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Med_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Med_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Quantity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Quantity)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Expire_Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Expire_Date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ChemicalForm)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ChemicalForm)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Company_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Company_ID)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Sell" /> |
+        @Html.ActionLink("Back to List", "Medicine")
+    </p>
+}

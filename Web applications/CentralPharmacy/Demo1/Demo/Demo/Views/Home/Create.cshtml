@@ -1,0 +1,85 @@
+﻿@model Demo.Models.Medicine
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<link type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" ></script>
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Medicine</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Quantity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Quantity)
+            @Html.ValidationMessageFor(model => model.Quantity)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Expire_Date)
+        </div>
+     @*   <div class="editor-field">
+            @Html.EditorFor(model => model.Expire_Date)
+            @Html.ValidationMessageFor(model => model.Expire_Date)
+        </div>*@
+        <p> <input type="DateTime" id="MyDate" name="date" /><br /> </p> 
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ChemicalForm)
+        </div>
+
+        <div class="editor-field">
+            @Html.DropDownList("Forms", new SelectList(ViewBag.chemicalForms),new { style = "font-size: 1.4em; font-weight: normal; width :315px"})
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Company_ID)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Names", new SelectList(ViewBag.CompanyNames),new { style = "font-size: 1.4em; font-weight: normal; width :315px"})
+
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script type="text/javascript">
+    $(function () {
+        $('#MyDate').datepicker();
+
+    });
+    </script>

@@ -1,0 +1,54 @@
+﻿@model Demo.Models.Sale
+
+@{
+    ViewBag.Title = "EditSale";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EditSale</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Sale</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Medicine_Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Medicine_Name)
+            @Html.ValidationMessageFor(model => model.Medicine_Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date_Sold)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date_Sold)
+            @Html.ValidationMessageFor(model => model.Date_Sold)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Sales")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

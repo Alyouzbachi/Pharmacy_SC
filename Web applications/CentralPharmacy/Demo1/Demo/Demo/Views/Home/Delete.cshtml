@@ -1,0 +1,68 @@
+﻿@model Demo.Models.Medicine
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Medicine</legend>
+
+    <div class="display-label">
+         @Html.HiddenFor(model => model.Med_ID)
+    </div>
+    <div class="display-field">
+        @Html.HiddenFor(model => model.Med_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <td class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </td>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Quantity)
+    </div>
+    <td class="display-field">
+        @Html.DisplayFor(model => model.Quantity)
+    </td>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Price)
+    </div>
+    <td class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </td>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Expire_Date)
+    </div>
+    <td class="display-field">
+        @Html.DisplayFor(model => model.Expire_Date)
+    </td>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ChemicalForm)
+    </div>
+    <td class="display-field">
+        @Html.DisplayFor(model => model.ChemicalForm)
+    </td>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Company_ID)
+    </div>
+    <td class="display-field">
+        @Html.DisplayFor(model => model.Company_ID)
+    </td>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Medicine")
+    </p>
+}

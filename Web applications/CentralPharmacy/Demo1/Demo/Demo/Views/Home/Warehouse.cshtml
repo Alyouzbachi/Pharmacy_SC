@@ -1,0 +1,116 @@
+﻿@model IEnumerable<Demo.Models.warehouse>
+
+@{
+    ViewBag.Title = "Warehouse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var grid = new WebGrid(source: Model, canPage: true, rowsPerPage: 10);
+    grid.Pager(WebGridPagerModes.All);
+}
+
+
+
+<h2>Warehouses</h2>
+
+<br />
+<br />
+<br />
+<br />
+<h3>@Html.ActionLink("Search all Warehouses", "SearchWarehouse")</h3>
+
+ <style type="text/css">
+            /*Here we will add css for style webgrid*/
+                .webgrid-table
+                {
+                    font-family: "Trebuchet MS" , Arial, Helvetica, sans-serif;
+                    font-size: 1.0em;
+                    width: 100%;
+                    display: table;
+                    border-collapse: separate;
+                    border: solid 1px #2C3E50;
+                    background-color: white;
+                }
+                .webgrid-table td, th
+                {
+                    border: 1px solid #2C3E50;
+                    padding: 3px 7px 2px;
+                }
+                .webgrid-header
+                {
+                    background-color: #2C3E50;
+                    color: #FFFFFF;
+                    padding-bottom: 4px;
+                    padding-top: 5px;
+                    text-align: left;
+                }
+                .webgrid-footer
+                {
+                }
+                .webgrid-row-style
+                {
+                    padding: 3px 7px 2px;
+                }
+                .webgrid-alternating-row
+                {
+                    background-color: #e8d4d4;
+                    padding: 3px 7px 2px;
+                }
+            </style>
+
+            <div id="content">
+                @grid.GetHtml(
+                tableStyle:"webgrid-table",
+                headerStyle:"webgrid-header",
+                footerStyle:"webgrid-footer",
+                alternatingRowStyle:"webgrid-alternating-row",
+                rowStyle:"webgrid-row-style",
+                columns:grid.Columns(
+                    //here i will add column for serial no
+                    grid.Column(header:"Serial No", format:@<text><div>@(item.WebGrid.Rows.IndexOf(item)+1)</div></text>),
+                    grid.Column(columnName:"Name",header:"Name"),
+                    grid.Column(columnName:"address",header:"address"),
+                    grid.Column(columnName:"tel",header:"TelNumber"),
+                    grid.Column(header: "Actions", format: (item) => new HtmlString(  
+                    Html.ActionLink("Show", "ShowWarehouse", new { id = item.id } ) .ToString() ))
+
+                   ))
+            </div>
+
+@*<h2>Warehouse</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tel)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tel)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>*@

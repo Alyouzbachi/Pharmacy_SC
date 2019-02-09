@@ -1,0 +1,85 @@
+﻿@model Warehouse1.Models.warehousemedicine
+
+@{
+    ViewBag.Title = "EditMed";
+}
+
+<h2>EditMed</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>warehousemedicine</legend>
+
+        @Html.HiddenFor(model => model.id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Quantity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Quantity)
+            @Html.ValidationMessageFor(model => model.Quantity)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Expired_date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Expired_date)
+            @Html.ValidationMessageFor(model => model.Expired_date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ChemicalForm)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ChemicalForm)
+            @Html.ValidationMessageFor(model => model.ChemicalForm)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Warehouse_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Warehouse_id)
+            @Html.ValidationMessageFor(model => model.Warehouse_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CompanyName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CompanyName)
+            @Html.ValidationMessageFor(model => model.CompanyName)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Medicines")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

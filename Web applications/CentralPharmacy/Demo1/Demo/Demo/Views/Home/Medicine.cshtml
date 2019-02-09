@@ -1,0 +1,136 @@
+﻿@model IEnumerable<Demo.Models.Medicine>
+
+@{
+    ViewBag.Title = "List of Medicine";
+    var grid = new WebGrid(source: Model, canPage: true, rowsPerPage: 10);
+    grid.Pager(WebGridPagerModes.All);
+}
+
+<h2>Medicines</h2>
+<p>
+    @Html.ActionLink("Notes", "Notes")
+</p>
+
+<br />
+ <style type="text/css">
+            /*Here we will add css for style webgrid*/
+                .webgrid-table
+                {
+                    font-family: "Trebuchet MS" , Arial, Helvetica, sans-serif;
+                    font-size: 1.0em;
+                    width: 100%;
+                    display: table;
+                    border-collapse: separate;
+                    border: solid 1px #2C3E50;
+                    background-color: white;
+                }
+                .webgrid-table td, th
+                {
+                    border: 1px solid #2C3E50;
+                    padding: 3px 7px 2px;
+                }
+                .webgrid-header
+                {
+                    background-color: #2C3E50;
+                    color: #FFFFFF;
+                    padding-bottom: 4px;
+                    padding-top: 5px;
+                    text-align: left;
+                }
+                .webgrid-footer
+                {
+                }
+                .webgrid-row-style
+                {
+                    padding: 3px 7px 2px;
+                }
+                .webgrid-alternating-row
+                {
+                    background-color: #e8d4d4;
+                    padding: 3px 7px 2px;
+                }
+            </style>
+
+            <div id="content">
+                @grid.GetHtml(
+                tableStyle:"webgrid-table",
+                headerStyle:"webgrid-header",
+                footerStyle:"webgrid-footer",
+                alternatingRowStyle:"webgrid-alternating-row",
+                rowStyle:"webgrid-row-style",
+                columns:grid.Columns(
+                    //here i will add column for serial no
+                    grid.Column(header:"Serial No", format:@<text><div>@(item.WebGrid.Rows.IndexOf(item)+1)</div></text>),
+                    grid.Column(columnName:"Name",header:"Name"),
+                    grid.Column(columnName:"Price", header:"Price"),
+                    grid.Column(columnName:"Quantity",header:"Quantity"),
+                    grid.Column(columnName:"Expire_Date",header:"Expire Date"),
+                    grid.Column(columnName:"ChemicalForm1.ChemicalForm1",header:"Chemical Form"),
+                    grid.Column(columnName: "Company.Name", header: "Company"),
+                    grid.Column(header: "Actions", format: (item) => new HtmlString(  
+                    Html.ActionLink("Edit", "Edit", new { id = item.Med_ID } ).ToString() +  
+                    Html.ActionLink("Delete", "Delete", new { id = item.Med_ID } ) .ToString() +
+                    Html.ActionLink("Sell", "Sell", new { id = item.Med_ID } ) .ToString() ))
+
+                   ))
+            </div>
+@*        
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Med_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Expire_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChemicalForm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Company_ID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Med_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Expire_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChemicalForm1.ChemicalForm1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Company_ID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Med_ID}) |
+            @Html.ActionLink("Details", "Details", new { id=item.Med_ID }) |
+            @Html.ActionLink("Sell","Sell", new {id=item.Med_ID})|
+            @Html.ActionLink("Delete", "Delete", new { id=item.Med_ID }) |
+        </td>
+    </tr>
+}
+*@
+</table>

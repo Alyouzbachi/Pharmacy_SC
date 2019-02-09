@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PharmacyModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="PharmacyEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="ChemicalForms" EntityType="PharmacyModel.ChemicalForm" />
+    <EntitySet Name="Companies" EntityType="PharmacyModel.Company" />
+    <EntitySet Name="Medicines" EntityType="PharmacyModel.Medicine" />
+    <AssociationSet Name="FK_Medicine_ChemicalForm" Association="PharmacyModel.FK_Medicine_ChemicalForm">
+      <End Role="ChemicalForm" EntitySet="ChemicalForms" />
+      <End Role="Medicine" EntitySet="Medicines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Medicine_Company" Association="PharmacyModel.FK_Medicine_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="Medicine" EntitySet="Medicines" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ChemicalForm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ChemicalForm1" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Medicines" Relationship="PharmacyModel.FK_Medicine_ChemicalForm" FromRole="ChemicalForm" ToRole="Medicine" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="tel" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Medicines" Relationship="PharmacyModel.FK_Medicine_Company" FromRole="Company" ToRole="Medicine" />
+  </EntityType>
+  <EntityType Name="Medicine">
+    <Key>
+      <PropertyRef Name="Med_ID" />
+    </Key>
+    <Property Name="Med_ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="Expire_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ChemicalForm" Type="Int32" Nullable="false" />
+    <Property Name="Company_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ChemicalForm1" Relationship="PharmacyModel.FK_Medicine_ChemicalForm" FromRole="Medicine" ToRole="ChemicalForm" />
+    <NavigationProperty Name="Company" Relationship="PharmacyModel.FK_Medicine_Company" FromRole="Medicine" ToRole="Company" />
+  </EntityType>
+  <Association Name="FK_Medicine_ChemicalForm">
+    <End Role="ChemicalForm" Type="PharmacyModel.ChemicalForm" Multiplicity="1" />
+    <End Role="Medicine" Type="PharmacyModel.Medicine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChemicalForm">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Medicine">
+        <PropertyRef Name="ChemicalForm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Medicine_Company">
+    <End Role="Company" Type="PharmacyModel.Company" Multiplicity="1" />
+    <End Role="Medicine" Type="PharmacyModel.Medicine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Medicine">
+        <PropertyRef Name="Company_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

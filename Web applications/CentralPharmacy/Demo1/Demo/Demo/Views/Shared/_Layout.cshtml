@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        
+    </head>
+
+    <body>
+
+        <header>
+            <div class="content-wrapper">
+                <p class="site-title">
+
+                </p>
+@*                <input type="button" value="Some text" onclick="@("window.location.href='" + @Url.Action("Action", "Controller") + "'")    ;" />*@
+
+                <input type="button" value="Home" onclick="@("window.location.href='" + @Url.Action("Index", "Home") + "'")    ;" />
+                <input type="button" value="Medicines" onclick="@("window.location.href='" + @Url.Action("Medicine", "Home") + "'")    ;" />
+                <input type="button" value="Sales" onclick="@("window.location.href='" + @Url.Action("Sales", "Home") + "'")    ;" />
+                <input type="button" value="Create" onclick="@("window.location.href='" + @Url.Action("Create", "Home") + "'")    ;" />
+                <input type="button" value="Search" onclick="@("window.location.href='" + @Url.Action("Search", "Home") + "'")    ;" />
+                <input type="button" value="Pharmacies" onclick="@("window.location.href='" + @Url.Action("showPharmacies", "Pharmacies") + "'")    ;" />
+                <input type="button" value="Warehouse" onclick="@("window.location.href='" + @Url.Action("Warehouse", "Home") + "'")    ;" />
+                <input type="button" value="Demands" onclick="@("window.location.href='" + @Url.Action("DemandsList", "Demand") + "'")    ;" />
+
+                 <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                 
+                </div>
+            </div>
+        </header>
+        <div id="body">
+
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+
+        @RenderSection("scripts", required: false)
+    </body>
+</html>
